@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Vamja Raj</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="brand">Vamja <span>Raj</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="experience.html">Experience</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container hero-panel">
+    <span class="eyebrow">Contact</span>
+    <h1 class="page-title">Let us build something great</h1>
+    <p class="text">Tell me about your project, timeline, and goals. I will respond quickly.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-head">
+          <h3>Send a message</h3>
+          <span class="contact-note">I reply within 24 hours</span>
+        </div>
+        <form id="contact-form">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+          <input type="text" name="subject" placeholder="Subject" required>
+          <textarea name="message" placeholder="Message" required></textarea>
+          <button class="btn" type="submit">Send Message</button>
+          <p id="form-status" class="text" style="margin-top:12px;"></p>
+        </form>
+      </div>
+      <div class="contact-card">
+        <h3>Contact details</h3>
+        <p class="text">Email: rajvamja966@gmail.com</p>
+        <p class="text">Phone: 8735010871</p>
+        <p class="text">Languages: Hindi | English | Gujarati</p>
+        <div style="margin-top:18px;">
+          <span class="pill">Open for full-time opportunities</span>
+        </div>
+        <div class="socials">
+          <a class="social-link" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="social-link" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+          <a class="social-link" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="social-link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">&copy; 2026 Vamja Raj</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("sCMED_CFaf_UOHXKJ");
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      status.textContent = "Sending...";
+
+      emailjs
+        .sendForm("service_kn7pgyd", "template_qr6tryj", this)
+        .then(function () {
+          status.textContent = "Message sent successfully!";
+          form.reset();
+        })
+        .catch(function (error) {
+          const detail = error && error.text ? " (" + error.text + ")" : "";
+          status.textContent = "Sorry, message not sent. Please try again." + detail;
+        });
+    });
+  })();
+</script>
+</body>
+</html>
